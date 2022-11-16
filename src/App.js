@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import About from "./components/About";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import ContactUs from "./components/ContactUs";
 function App() {
   const [mode, setMode] = useState("light");
   const [toggleText, setToggleText] = useState("Enable Dark Mode");
@@ -18,22 +18,19 @@ function App() {
     }
   };
   return (
-    <>
+    <BrowserRouter>
       <Navbar
         title="TextUtils"
         mode={mode}
         toggleMode={toggleMode}
         toggleText={toggleText}
       />
-      <div className="container">
-        <Router>
-          <div>
-            <Route path="/" component={TextForm} />
-            <Route path="/about" component={About} />
-          </div>
-        </Router>
-      </div>
-    </>
+      <Routes>
+        <Route path="/" element={<TextForm />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

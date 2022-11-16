@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Router, Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 export default function Navbar(props) {
@@ -26,7 +26,7 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link className="nav-link active" to="/">
                   Home
                 </Link>
               </li>
@@ -36,28 +36,28 @@ export default function Navbar(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/contact">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
-          </div>
-          <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="flexSwitchCheckDefault"
-              onClick={props.toggleMode}
-            />
-            <label
-              class={`form-check-label ${
-                props.mode == "light" ? `text-dark` : `text-dark`
-              }`}
-              for="flexSwitchCheckDefault"
-            >
-              {props.toggleText}
-            </label>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                onClick={props.toggleMode}
+              />
+              <label
+                class={`form-check-label ${
+                  props.mode === "light" ? `text-dark` : `text-light`
+                }`}
+                for="flexSwitchCheckDefault"
+              >
+                {props.toggleText}
+              </label>
+            </div>
           </div>
         </div>
       </nav>
